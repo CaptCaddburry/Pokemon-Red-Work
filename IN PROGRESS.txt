@@ -1,0 +1,566 @@
+#include "all.h"
+
+using namespace std;
+
+int middle=29;
+bool turn=false;
+void moveMap();
+int x=18,y=12;  
+bool rend=true;
+int mapX=26;
+int mapY=23;
+int mapNumber=0;
+int direction=3;
+
+int main(int argc, char *argv[])
+{
+string map[100][100]=
+{
+    {
+    // Ash's Bedroom
+    // 8x7
+    // 0
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "           *                                                           *         ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "           *                --------------------------                 *         ",
+    "                            |[ ]|    |              _|                           ",
+    "                            |[ ]|    |            _| |                           ",
+    "                            |[_]|____|            _|_|                           ",
+    "                            |                        |                           ",
+    "                            |                        |                           ",
+    "                            |                        |                           ",
+    "                            |                        |                           ",
+    "                            |                        |                           ",
+    "                            |                        |                           ",
+    "                            |          _             |                           ",
+    "                            |         [ ]            |                           ",
+    "                            |         [_]            |                           ",
+    "                            |         []!            |                           ",
+    "                            |         []!            |                           ",
+    "                            |__       !!%            |                           ",
+    "                            |  |               !^!   |                           ",
+    "                            |  |               < >   |                           ",
+    "                            |  |               < >   |                           ",
+    "                            |  |               |_|   |                           ",
+    "                            |  |               |_|   |                           ",
+    "                            |  |               { }   |                           ",
+    "           *                --------------------------                 *         ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "           *                                                           *         ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 ",
+    "                                                                                 "
+    },                                  
+    {
+    // Bottom of Ash's House
+    // 8x7
+    // 1
+    "--------------------------",
+    "||_||_|    _            _|",
+    "||_||_|   [ ]         _| |",
+    "||_||_|   [_]         _|_|",
+    "|                        |",
+    "|                        |",
+    "|                        |",
+    "|                        |",
+    "|                        |",
+    "|                        |",
+    "|          ____          |",
+    "|         |    |         |",
+    "|         |    |         |",
+    "|         |    |         |",
+    "|         |    |         |",
+    "|         |____|         |",
+    "|                        |",
+    "|                        |",
+    "|                        |",
+    "|      ``````            |",
+    "|      ``````            |",
+    "|      ``````            |",
+    "--------------------------"
+    },
+    {
+    // Pallet Town
+    // 18x15
+    // 2
+    "---------------------------|@@@@@@|---------------------",
+    "|                                                      |",
+    "|                                                      |",
+    "|         !!!______!!!            !!!______!!!         |",
+    "|         !!/|    |\\!!            !!/|    |\\!!         |",
+    "|         !/ |    | \\!            !/ |    | \\!         |",
+    "|         |  |____|  |            |  |____|  |         |",
+    "|         | /      \\ |            | /      \\ |         |",
+    "|         |/        \\|            |/        \\|         |",
+    "|         |__________|            |__________|         |",
+    "|      *** | | |    |!         *** | | |    |!         |",
+    "|      *** | | |    |!         *** | | |    |!         |",
+    "|      !!| |_|_|____|!         !!| |_|_|____|!         |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                           !!!____________!!!         |",
+    "|                           !!/|          |\\!!         |",
+    "|                           !/ |          | \\!         |",
+    "|                           |  |          |  |         |",
+    "|                           |  |          |  |         |",
+    "|                           |  |          |  |         |",
+    "|                           |  |__________|  |         |",
+    "|                           | /            \\ |         |",
+    "|                           |/     _        \\|         |",
+    "|                           !|    | |       |!         |",
+    "|                           !|    | |       |!         |",
+    "|                           !|____|_|_______|!         |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|                                                      |",
+    "|          ----------                                  |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "|         |&&&&&&&&&&|                                 |",
+    "----------|&&&&&&&&&&|----------------------------------"
+    },
+    {
+    //Route 1
+    //14x30
+    //3
+    "--------------------------------------------",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|                                          |",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|      @@@@@@@@@@@@            @@@@@@@@@@@@|",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "|@@@@@@@@@@@@            @@@@@@@@@@@@      |",
+    "------------------|      |------------------"
+    }
+};
+ 
+char input;
+char up=static_cast<char>(24);
+char down=static_cast<char>(25);
+char right=static_cast<char>(26);
+char left=static_cast<char>(27);
+while(true)
+{
+    if(rend)
+    {
+    system("CLS");
+    gotoXY(0,0);
+            for(int i=middle-y+3;i<middle-y+63;i++)
+            //14-74
+            //10-70
+            {  
+                for(int h=middle-x-1;h<middle-x+59;h++)
+                {
+                            if(map[mapNumber][i][h]=='~')
+                            {
+                            cout<<static_cast<char>(179);
+                            }else if(map[mapNumber][i][h]=='`')
+                            {
+                            cout<<static_cast<char>(177);
+                            }else if(map[mapNumber][i][h]=='&')
+                            {
+                            textcolor(BLUE);
+                            cout<<static_cast<char>(247);
+                            textcolor(7);
+                            }else if(map[mapNumber][i][h]=='-')
+                            {
+                            cout<<static_cast<char>(196);
+                            }else if(map[mapNumber][i][h]=='|')
+                            {
+                            cout<<static_cast<char>(179);
+                            }else if(map[mapNumber][i][h]=='!')
+                            {
+                            cout<<" ";
+                            }else if(map[mapNumber][i][h]=='@')
+                            {
+                            textcolor(10);
+                            cout<<static_cast<char>(127);
+                            textcolor(7);
+                            }else
+                            {
+                            cout<<map[mapNumber][i][h];      
+                            }   
+                }
+                //cout<<endl;
+            }
+            moveMap();
+            rend=false;
+        
+        cout<<x<<" "<<y<<" "<<middle-x-1<<" "<<middle-x+59<<" "<<middle-y+3<<" "<<middle-y+63;
+        //map[mapNumber][middle-y][middle-x-2]='X';
+            
+    } //END RENDER IF STATEMENT
+rend=false;
+//TESTING RENDER
+
+
+//RenderAsh
+textcolor(LIGHTRED);
+gotoXY(middle-1,middle-1);
+cout<< "OOO";
+gotoXY(middle-1,middle);
+cout<< "OOO";
+gotoXY(middle-1,middle+1);
+cout<< "OOO";
+textcolor(7);
+
+if(direction==1)
+{
+gotoXY(27,29);
+cout<<left;
+}
+
+if(direction==2)
+{
+gotoXY(31,29);
+cout<<right;
+}
+
+if(direction==3)
+{
+gotoXY(29,27);
+cout<<up;
+}
+
+if(direction==4)
+{
+gotoXY(29,31);
+cout<<down;
+}
+//RenderAsh   
+
+
+//Move
+input=getch();
+
+if(input==ESC)
+{
+return EXIT_SUCCESS;
+}
+
+if(input==DOWN)
+{
+    if(direction==4)
+    {
+        if((map[mapNumber][middle-y+2][middle-x]==' ')||(map[mapNumber][middle-y+2][middle-x]=='~')||(map[mapNumber][middle-y+2][middle-x]=='`'))
+        {   
+        y-=3;   
+        rend=true;            
+        }else{
+            y-=3;
+            //CHECK DOORS;
+            moveMap();
+            y+=3;
+            rend=true;
+        }          
+    }else
+    {
+    rend=true;
+    }
+    direction=4;
+}
+
+
+if(input==UP)
+{ 
+    if(direction==3)
+    {          
+        if((map[mapNumber][middle-y-2][middle-x]==' ')||(map[mapNumber][middle-y-2][middle-x]=='~')||(map[mapNumber][middle-y-2][middle-x]=='`'))
+        {
+            y+=3;             
+            rend=true;
+        }else
+        {
+            y+=3;
+            //CHECK DOORS;
+            moveMap();
+            y-=3;
+            rend=true;
+            
+        }
+    }
+    rend=true;
+    direction=3;
+
+}
+if(input==LEFT)
+{
+    if(direction==1)
+    {
+        if((map[mapNumber][middle-y][middle-x-2]==' ')||(map[mapNumber][middle-y][middle-x-2]=='~')||(map[mapNumber][middle-y][middle-x-2]=='`'))
+        {
+        x+=3;      
+        rend=true;
+        }else{
+            x+=3;
+            //CHECK DOORS;
+            moveMap();
+            x-=3;
+            rend=true;
+        }
+    }else
+    {
+    rend=true;
+    }
+    direction=1;         
+}
+if(input==RIGHT)
+{   
+    if(direction==2)
+    {
+        if((map[mapNumber][middle-y][middle-x+2]==' ')||(map[mapNumber][middle-y][middle-x+2]=='~')||(map[mapNumber][middle-y][middle-x+2]=='`'))
+        { 
+        x-=3;     
+        rend=true;      
+        }else{           
+              x-=3;
+            //CHECK DOORS;
+            moveMap();
+            x+=3;
+            rend=true;
+        } 
+    }else
+    {
+    rend=true;     
+    }
+direction=2;      
+}
+//Move
+
+
+
+//Move Map indicator
+
+
+//Move Map indicator
+
+
+
+}  //END WHILE STATMENT
+
+
+
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
+// counter for map number
+// class of different maps/functions
+// put input into class to decide the boundaries for map
+// 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+void moveMap()
+{
+
+if((x==-22)&&(y==-1)&&(mapNumber==0))
+{
+mapNumber=1;
+mapX=26;
+mapY=23;
+x=9;
+y=27;
+direction=1;
+}
+if((x==6)&&(y==27)&&(mapNumber==1))
+{
+mapNumber=0;
+mapX=26;
+mapY=23;
+x=6;
+y=24;
+direction=4;
+}
+if((x==21)&&(y==6)&&(mapNumber==1)&&(direction==4))
+{
+mapNumber=2;
+mapX=56;
+mapY=47;
+x=15;
+y=12;
+direction=4;
+}
+if((x==15)&&(y==18)&&(mapNumber==2)&&(direction==3))
+{
+mapNumber=1;
+mapX=26;
+mapY=23;
+x=21;
+y=12;
+direction=3;
+}
+if((x==0)&&(y==30)&&(mapNumber==2)&&(direction==3))
+{
+mapNumber=3;
+mapX=44;
+mapY=92;
+x=9;
+y=-60;
+direction=3;
+}
+
+}
+

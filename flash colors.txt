@@ -1,0 +1,231 @@
+for(int i=1;i<=10;i++)
+{
+for(int h=241;h<=254;h++)
+{
+textcolor(h);
+cout<< "0";
+Sleep(1);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//while(choice)
+//    {
+//    Sleep(100);
+//    system("CLS");
+//    Bulbasaur.health-=1;
+//
+//     for(int i=0;i<12;i++)
+//    {
+//        if(i==11)
+//        {
+//            for(int h=0;h<59;h++)
+//            {
+//                gotoxy(h+1,i+49);
+//                cout<<battle[screenNumber][i][h];      
+//            }
+//        }
+//        else
+//        {
+//            for(int h=0;h<60;h++)
+//            {
+//                gotoxy(h+1,i+49);
+//                cout<<battle[screenNumber][i][h];      
+//            }
+//        }
+//    }
+//    Squirtle.drawSquirtle1();
+//    Bulbasaur.drawBulbasaur1();
+//    Bulbasaur.displayInfo();
+//    }
+    
+
+    /*
+    bool choice=true;
+    char input;
+    int a=35;
+    int b=54;
+    cout<< setfill(' ');
+    gotoXY(0,54);
+    cout<< "------------------------------------------------------------";
+    gotoXY(0,55);
+    cout<< "|" << setw(29) << "|" << setw(11) << ">FIGHT" << setw(9) << " POKE" << setw(10) << "|";
+    gotoXY(0,56);
+    cout<< "|" << setw(29) << "|" << setw(30) << "|";
+    gotoXY(0,57);
+    cout<< "|" << setw(29) << "|" << setw(10) << " PACK" << setw(9) << " RUN" << setw(11) << "|";
+    gotoXY(0,58);
+    cout<< "|" << setw(29) << "|" << setw(30) << "|";
+    gotoXY(0,59);
+    cout<< "------------------------------------------------------------";
+    while(true)
+    {
+    input=getch();
+    if(input==RIGHT)
+    {
+    gotoXY(a,b);
+    cout<< " ";
+    a=a+10;
+    if(a>45)
+    {
+    a=35;
+    }
+    gotoXY(a,b);
+    cout<< ">";
+    }
+    if(input==LEFT)
+    {
+    gotoXY(a,b);
+    cout<< " ";
+    a=a-10;
+    if(a<35)
+    {
+    a=45;
+    }
+    gotoXY(a,b);
+    cout<< ">";
+    }
+    if(input==DOWN)
+    {
+    gotoXY(a,b);
+    cout<< " ";
+    b=b+2;
+    if(b>56)
+    {
+    b=54;
+    }
+    gotoXY(a,b);
+    cout<< ">";
+    }
+    if(input==UP)
+    {
+    gotoXY(a,b);
+    cout<< " ";
+    b=b-2;
+    if(b<54)
+    {
+    b=56;
+    }
+    gotoXY(a,b);
+    cout<< ">";
+    }
+    if(input==ENTER)
+    {
+    if(a==35&&b==54)
+    {
+    system("CLS");
+    cout<< setfill('-');
+    gotoXY(0,54);
+    cout<< setw(60) << "-";
+    gotoXY(0,55);
+    cout<< setfill(' ');
+    cout<< "|" << setw(59) << "|";
+    gotoXY(0,56);
+    cout<< "|" << setw(59) << "|";
+    gotoXY(0,57);
+    cout<< "|" << setw(59) << "|";
+    gotoXY(0,58);
+    cout<< "|" << setw(59) << "|";
+    cout<< setfill('-');
+    gotoXY(0,59);
+    cout<< setw(60) << "-";
+    gotoXY(0,48);
+    cout<< setw(30) << "-";
+    cout<< setfill(' ');
+    gotoXY(0,49);
+    cout<< "|" << setw(29) << "|";
+    gotoXY(0,50);
+    cout<< "|" << setw(29) << "|";
+    gotoXY(0,51);
+    cout<< "|" << setw(29) << "|";
+    cout<< setfill('-');
+    gotoXY(0,52);
+    cout<< setw(30) << "-";
+    }
+    if(a==45&&b==54)
+    {
+    system("CLS");
+    cout<< "P" << endl;
+    }
+    if(a==35&&b==56)
+    {
+    system("CLS");
+    cout<< "B" << endl;
+    }
+    if(a==45&&b==56)
+    {
+    system("CLS");
+    cout<< "R" << endl;
+    }
+    }
+    }
+    
+    srand(time(0));
+    bulbasaur newBulbasaur;
+    charmander newCharmander;
+    squirtle newSquirtle;
+    newBulbasaur.setPokemon();
+    newCharmander.setPokemon();
+    newSquirtle.setPokemon();
+    int A=newBulbasaur.level;
+    int B=newBulbasaur.attack;
+    int C=35;
+    int D=newCharmander.defense;
+    int E=newBulbasaur.STAB;
+    int F=1;
+    int G=rand()%15+85;
+    int damage = ((((2*A/5+2)*B*C/D)/50)+2)*E*F*G/100;
+    cout<< "Bulbasaur" << endl;
+    cout<< "Level: " << newBulbasaur.level << endl;
+    cout<< "HP: " << newBulbasaur.hp << endl;
+    cout<< "Attack: " << newBulbasaur.attack << endl;
+    cout<< "Defense: " << newBulbasaur.defense << endl;
+    cout<< "Special: " << newBulbasaur.special << endl;
+    cout<< "Speed: " << newBulbasaur.speed << endl;
+    cout<< "Pokedex Number: " << newBulbasaur.pokedexNumber << endl;
+    cout<< "EXP: " << newBulbasaur.exp << endl;
+    cout<< "Gender: " << newBulbasaur.gender << endl;
+    cout<< endl << endl;
+    cout<< "Charmander" << endl;
+    cout<< "Level: " << newCharmander.level << endl;
+    cout<< "HP: " << newCharmander.hp << endl;
+    cout<< "Attack: " << newCharmander.attack << endl;
+    cout<< "Defense: " << newCharmander.defense << endl;
+    cout<< "Special: " << newCharmander.special << endl;
+    cout<< "Speed: " << newCharmander.speed << endl;
+    cout<< "Pokedex Number: " << newCharmander.pokedexNumber << endl;
+    cout<< "EXP: " << newCharmander.exp << endl;
+    cout<< "Gender: " << newCharmander.gender << endl;
+    cout<< endl << endl;
+    cout<< "Squirtle" << endl;
+    cout<< "Level: " << newSquirtle.level << endl;
+    cout<< "HP: " << newSquirtle.hp << endl;
+    cout<< "Attack: " << newSquirtle.attack << endl;
+    cout<< "Defense: " << newSquirtle.defense << endl;
+    cout<< "Special: " << newSquirtle.special << endl;
+    cout<< "Speed: " << newSquirtle.speed << endl;
+    cout<< "Pokedex Number: " << newSquirtle.pokedexNumber << endl;
+    cout<< "EXP: " << newSquirtle.exp << endl;
+    cout<< "Gender: " << newSquirtle.gender << endl;
+    cout<< endl << endl << endl;
+    cout<< abs(damage) << endl;
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
+    */
